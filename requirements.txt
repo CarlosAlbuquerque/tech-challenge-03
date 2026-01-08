@@ -1,0 +1,21 @@
+# IA e Processamento
+torch
+transformers
+peft
+accelerate
+bitsandbytes
+sentence-transformers
+
+# LangChain (Ecossistema Completo)
+langchain
+langchain-community
+langchain-core
+langchain-huggingface
+langchain-text-splitters
+
+# Banco de Dados Vetorial
+faiss-cpu
+
+# Dados
+pandas
+datasets
