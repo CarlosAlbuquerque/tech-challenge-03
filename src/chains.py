@@ -11,7 +11,7 @@ from langchain_community.document_loaders import CSVLoader
 # --- CONFIGURAÇÃO ---
 base_dir = os.path.dirname(os.path.abspath(__file__)) 
 adapter_path = os.path.join(base_dir, "..", "models")
-real_csv_path = os.path.join(base_dir, "..", "data", "base_demo_segura.csv")
+csv_path = os.path.join(base_dir, "..", "data", "base_medica_pt.csv")
 
 def print_loading(message):
     sys.stdout.write(f"\r⚙️  {message}...")
@@ -25,7 +25,7 @@ def clear_screen():
 # --- INICIALIZAÇÃO ---
 clear_screen()
 print("\n" + "="*60)
-print("🏥 HEALTH ASSISTANT INTELLIGENCE SYSTEM v3.0 (Safety Guard)")
+print("🏥 HEALTH ASSISTANT INTELLIGENCE")
 print("="*60 + "\n")
 
 try:
@@ -42,8 +42,8 @@ except Exception as e:
 try:
     print_loading("Conectando ao MedQuAD")
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    if os.path.exists(real_csv_path):
-        loader = CSVLoader(real_csv_path, encoding='utf-8', source_column="question")
+    if os.path.exists(csv_path):
+        loader = CSVLoader(csv_path, encoding='utf-8', source_column="question")
         docs = loader.load()
         vector_db = FAISS.from_documents(docs, embeddings)
         print_loading(f"Indexando Protocolos Clínicos") 
